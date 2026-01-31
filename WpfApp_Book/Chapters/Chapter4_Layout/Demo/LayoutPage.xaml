@@ -37,12 +37,12 @@ double y = Canvas.GetTop(myElement);   // Получить текущую Y
                     </Border>
                     
                     <TextBlock Text="⚠️ Важно:" FontWeight="SemiBold" Foreground="#E74C3C"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="13" Margin="0,5,0,0">
-• Canvas.Left/Top — это attached properties (присоединяемые свойства)
-• Координаты считаются от левого верхнего угла Canvas
-• Canvas НЕ имеет автоматического размера — задавайте Width/Height или ClipToBounds="True"
-• Элементы могут выходить за границы Canvas, если не использовать ClipToBounds
-                    </TextBlock>
+                    <StackPanel Margin="0,5,0,0">
+                        <TextBlock Text="• Canvas.Left/Top — attached properties" FontSize="13"/>
+                        <TextBlock Text="• Координаты от левого верхнего угла Canvas" FontSize="13"/>
+                        <TextBlock Text="• Canvas не имеет авто-размера: задайте Width/Height" FontSize="13"/>
+                        <TextBlock Text="• Используйте ClipToBounds='True' для обрезки" FontSize="13"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
@@ -50,12 +50,12 @@ double y = Canvas.GetTop(myElement);   // Получить текущую Y
             <Border Background="#E8F6F3" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
                     <TextBlock Text="🎯 Система координат WPF" FontSize="18" FontWeight="Bold" Foreground="#1E8449"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
-В WPF координаты работают следующим образом:
-• Точка (0, 0) находится в левом верхнем углу
-• Ось X увеличивается вправо
-• Ось Y увеличивается ВНИЗ (это важно! В математике Y идёт вверх)
-                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,5" FontSize="13">В WPF координаты работают так:</TextBlock>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="• Точка (0, 0) — левый верхний угол" FontSize="13"/>
+                        <TextBlock Text="• Ось X увеличивается → вправо" FontSize="13"/>
+                        <TextBlock Text="• Ось Y увеличивается ↓ вниз (важно!)" FontSize="13" Foreground="#E74C3C"/>
+                    </StackPanel>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
                         <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
@@ -99,12 +99,12 @@ bool isColliding = Math.Abs(x2 - x1) &lt; (w1 + w2) / 2 &amp;&amp;
                     </Border>
                     
                     <TextBlock Text="Применение:" FontWeight="SemiBold" Margin="0,5,0,5"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="13">
-• Определение столкновений в играх
-• Притягивание объектов (snap-to-grid)
-• Создание зон влияния
-• Ограничение области перемещения
-                    </TextBlock>
+                    <StackPanel>
+                        <TextBlock Text="• Определение столкновений в играх" FontSize="13"/>
+                        <TextBlock Text="• Притягивание объектов (snap-to-grid)" FontSize="13"/>
+                        <TextBlock Text="• Создание зон влияния" FontSize="13"/>
+                        <TextBlock Text="• Ограничение области перемещения" FontSize="13"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
@@ -176,15 +176,24 @@ private void Element_MouseUp(object sender, MouseButtonEventArgs e)
                     
                     <TextBlock Text="Ключевые моменты:" FontWeight="SemiBold" Foreground="#8E44AD" Margin="0,10,0,5"/>
                     <Border Background="White" CornerRadius="4" Padding="10">
-                        <TextBlock TextWrapping="Wrap" FontSize="13">
-• CaptureMouse() — захватывает мышь для элемента. Все события мыши будут приходить этому элементу, даже если курсор выйдет за его границы. Без этого при быстром движении элемент "отстанет".
-
-• ReleaseMouseCapture() — освобождает захват мыши.
-
-• clickOffset — смещение точки клика от левого верхнего угла элемента. Без него элемент будет "прыгать" так, чтобы его угол оказался под курсором.
-
-• e.GetPosition(canvas) — координаты мыши относительно указанного элемента.
-                        </TextBlock>
+                        <StackPanel>
+                            <StackPanel Margin="0,0,0,8">
+                                <TextBlock FontWeight="Bold" FontSize="13">• CaptureMouse()</TextBlock>
+                                <TextBlock TextWrapping="Wrap" FontSize="12" Margin="12,2,0,0" Foreground="#555">Захватывает мышь. События мыши приходят элементу даже если курсор выйдет за границы.</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,8">
+                                <TextBlock FontWeight="Bold" FontSize="13">• ReleaseMouseCapture()</TextBlock>
+                                <TextBlock TextWrapping="Wrap" FontSize="12" Margin="12,2,0,0" Foreground="#555">Освобождает захват мыши.</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,8">
+                                <TextBlock FontWeight="Bold" FontSize="13">• clickOffset</TextBlock>
+                                <TextBlock TextWrapping="Wrap" FontSize="12" Margin="12,2,0,0" Foreground="#555">Смещение клика от угла элемента. Без него элемент "прыгает".</TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="13">• e.GetPosition(canvas)</TextBlock>
+                                <TextBlock TextWrapping="Wrap" FontSize="12" Margin="12,2,0,0" Foreground="#555">Координаты мыши относительно указанного элемента.</TextBlock>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </Border>

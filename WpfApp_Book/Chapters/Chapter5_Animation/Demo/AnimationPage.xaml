@@ -42,13 +42,12 @@ private void GameLoop(object? sender, EventArgs e)
                     
                     <TextBlock Text="Выбор интервала (FPS):" FontWeight="SemiBold" Margin="0,5,0,5"/>
                     <Border Background="#EBF5FB" CornerRadius="4" Padding="10">
-                        <TextBlock TextWrapping="Wrap" FontSize="13">
-• 16 мс = ~60 FPS (плавная анимация, стандарт для игр)
-• 33 мс = ~30 FPS (нормально для простых игр)
-• 100-200 мс = 5-10 FPS (для пошаговых игр, змейки)
-
-FPS = 1000 / интервал_в_мс
-                        </TextBlock>
+                        <StackPanel>
+                            <TextBlock Text="• 16 мс = ~60 FPS (плавная анимация)" FontSize="13"/>
+                            <TextBlock Text="• 33 мс = ~30 FPS (простые игры)" FontSize="13"/>
+                            <TextBlock Text="• 100-200 мс = 5-10 FPS (змейка)" FontSize="13"/>
+                            <TextBlock Text="FPS = 1000 / интервал_в_мс" FontSize="13" FontWeight="Bold" Margin="0,8,0,0"/>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </Border>
@@ -103,11 +102,11 @@ private void GameLoop(object? sender, EventArgs e)
             <Border Background="#FEF9E7" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
                     <TextBlock Text="🚀 Скорость и направление (Velocity)" FontSize="18" FontWeight="Bold" Foreground="#B7950B"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
-Скорость объекта описывается двумя компонентами:
-• velocityX — горизонтальная составляющая (+ вправо, − влево)
-• velocityY — вертикальная составляющая (+ вниз, − вверх)
-                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,5" FontSize="13">Скорость объекта описывается двумя компонентами:</TextBlock>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="• velocityX — горизонталь (+ вправо, − влево)" FontSize="13"/>
+                        <TextBlock Text="• velocityY — вертикаль (+ вниз, − вверх)" FontSize="13"/>
+                    </StackPanel>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
                         <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">

@@ -45,11 +45,11 @@ private void Page_KeyDown(object sender, KeyEventArgs e)
                     </Border>
                     
                     <TextBlock Text="⚠️ Важно: Focusable и Focus()" FontWeight="SemiBold" Foreground="#E74C3C"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="13" Margin="0,5,0,0">
-• Страница должна иметь Focusable="True" в XAML
-• При загрузке вызвать this.Focus() чтобы страница получила фокус
-• Иначе события клавиатуры не будут приходить
-                    </TextBlock>
+                    <StackPanel Margin="0,5,0,0">
+                        <TextBlock Text="• Страница: Focusable='True' в XAML" FontSize="13"/>
+                        <TextBlock Text="• При загрузке: this.Focus()" FontSize="13"/>
+                        <TextBlock Text="• Иначе клавиатура не работает!" FontSize="13"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
@@ -94,12 +94,12 @@ switch (currentDirection)
             <Border Background="#FEF9E7" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
                     <TextBlock Text="🔗 Связывание объектов (цепочка/хвост)" FontSize="18" FontWeight="Bold" Foreground="#B7950B"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
-В игре "Змейка" тело следует за головой. Это реализуется так:
-• Храним список позиций всех сегментов
-• На каждом шаге: добавляем новую голову, удаляем хвост
-• При съедании еды: НЕ удаляем хвост (змейка растёт)
-                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,5" FontSize="13">В игре "Змейка" тело следует за головой:</TextBlock>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="• Храним список позиций всех сегментов" FontSize="13"/>
+                        <TextBlock Text="• Каждый шаг: добавляем голову, удаляем хвост" FontSize="13"/>
+                        <TextBlock Text="• Съели еду: НЕ удаляем хвост → змейка растёт" FontSize="13"/>
+                    </StackPanel>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
                         <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">

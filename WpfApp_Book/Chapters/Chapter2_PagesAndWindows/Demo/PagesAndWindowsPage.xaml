@@ -26,24 +26,24 @@
                         <Border Grid.Column="0" Background="#D4E6F1" CornerRadius="5" Padding="10" Margin="0,0,5,0">
                             <StackPanel>
                                 <TextBlock Text="Window (Окно)" FontWeight="Bold" FontSize="14"/>
-                                <TextBlock TextWrapping="Wrap" Margin="0,5,0,0" FontSize="12">
-• Отдельное окно с заголовком
-• Может быть свёрнуто/развёрнуто
-• Имеет свою панель задач
-• Используется для главного окна и диалогов
-                                </TextBlock>
+                                <StackPanel Margin="0,5,0,0">
+                                    <TextBlock Text="• Отдельное окно с заголовком" FontSize="12"/>
+                                    <TextBlock Text="• Может быть свёрнуто/развёрнуто" FontSize="12"/>
+                                    <TextBlock Text="• Имеет свою панель задач" FontSize="12"/>
+                                    <TextBlock Text="• Для главного окна и диалогов" FontSize="12"/>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                         
                         <Border Grid.Column="1" Background="#D5F5E3" CornerRadius="5" Padding="10" Margin="5,0,0,0">
                             <StackPanel>
                                 <TextBlock Text="Page (Страница)" FontWeight="Bold" FontSize="14"/>
-                                <TextBlock TextWrapping="Wrap" Margin="0,5,0,0" FontSize="12">
-• Отображается внутри Frame
-• Нет собственного окна
-• Подходит для навигации
-• Легче переключать контент
-                                </TextBlock>
+                                <StackPanel Margin="0,5,0,0">
+                                    <TextBlock Text="• Отображается внутри Frame" FontSize="12"/>
+                                    <TextBlock Text="• Нет собственного окна" FontSize="12"/>
+                                    <TextBlock Text="• Подходит для навигации" FontSize="12"/>
+                                    <TextBlock Text="• Легче переключать контент" FontSize="12"/>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -123,22 +123,22 @@ myTabControl.SelectedIndex = 1;  // Вторая вкладка
                         <Border Grid.Column="0" Background="White" CornerRadius="5" Padding="10" Margin="0,0,5,0">
                             <StackPanel>
                                 <TextBlock Text="Show() — обычное" FontWeight="Bold" FontSize="13"/>
-                                <TextBlock TextWrapping="Wrap" Margin="0,5,0,0" FontSize="12">
-• Не блокирует родительское окно
-• Пользователь может работать с обоими окнами
-• Для вспомогательных панелей
-                                </TextBlock>
+                                <StackPanel Margin="0,5,0,0">
+                                    <TextBlock Text="• Не блокирует родительское окно" FontSize="12"/>
+                                    <TextBlock Text="• Можно работать с обоими" FontSize="12"/>
+                                    <TextBlock Text="• Для вспомогательных панелей" FontSize="12"/>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                         
                         <Border Grid.Column="1" Background="White" CornerRadius="5" Padding="10" Margin="5,0,0,0">
                             <StackPanel>
                                 <TextBlock Text="ShowDialog() — модальное" FontWeight="Bold" FontSize="13"/>
-                                <TextBlock TextWrapping="Wrap" Margin="0,5,0,0" FontSize="12">
-• Блокирует родительское окно
-• Нужно закрыть для продолжения
-• Для диалогов и подтверждений
-                                </TextBlock>
+                                <StackPanel Margin="0,5,0,0">
+                                    <TextBlock Text="• Блокирует родительское окно" FontSize="12"/>
+                                    <TextBlock Text="• Нужно закрыть для продолжения" FontSize="12"/>
+                                    <TextBlock Text="• Для диалогов и подтверждений" FontSize="12"/>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                     </Grid>
