@@ -18,7 +18,7 @@
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // XAML: Focusable="True" KeyDown="Page_KeyDown"
 // В Loaded: this.Focus();
 
@@ -62,7 +62,7 @@ private void Page_KeyDown(object sender, KeyEventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // СПОСОБ 1: Мгновенное перемещение (Sokoban, шахматы)
 // Клавиша сразу меняет позицию
 case Key.Up: y -= step; break;
@@ -102,7 +102,7 @@ switch (currentDirection)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Список позиций сегментов змейки
 // snakeBody[0] — голова, snakeBody[n-1] — хвост
 private List&lt;Point&gt; snakeBody = new List&lt;Point&gt;();
@@ -165,7 +165,7 @@ private void GameLoop(object? sender, EventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Проверка столкновения с границами
 if (newHead.X &lt; 0 || newHead.Y &lt; 0 || 
     newHead.X &gt;= canvasWidth || newHead.Y &gt;= canvasHeight)
@@ -205,7 +205,7 @@ if (snakeBody.Skip(1).Contains(newHead))
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Данные (логика игры)
 private List&lt;Point&gt; snakeBody = new List&lt;Point&gt;();
 
@@ -272,29 +272,79 @@ snakeSegments.RemoveAt(snakeSegments.Count - 1);  // Удаляем ссылку
             <Border Background="#FADBD8" CornerRadius="8" Padding="15" BorderBrush="#E74C3C" BorderThickness="2">
                 <StackPanel>
                     <TextBlock Text="📋 Практическое задание: Полноценная Змейка" FontSize="18" FontWeight="Bold" Foreground="#C0392B"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontSize="13">
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
 Создайте полноценную игру "Змейка":
                     </TextBlock>
-                    <Border Background="White" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock TextWrapping="Wrap" FontSize="13">
-✅ Змейка управляется стрелками или WASD
-
-✅ Змейка растёт при поедании еды
-
-✅ Игра заканчивается при столкновении со стеной или с собой
-
-✅ Отображается текущий счёт
-
-✅ Кнопки Старт/Пауза и Заново
-
-✅ Скорость увеличивается каждые 5 съеденных точек
-
-🌟 Бонус: Разные цвета для головы и тела
-
-🌟 Бонус: Сохранение рекорда (можно в переменную)
-
-🌟 Бонус: Режим "без границ" — змейка появляется с другой стороны
-                        </TextBlock>
+                    
+                    <Border Background="White" CornerRadius="5" Padding="15">
+                        <StackPanel>
+                            <TextBlock Text="Требования:" FontWeight="Bold" Margin="0,0,0,10"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Змейка управляется стрелками или WASD"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Змейка растёт при поедании еды"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Игра заканчивается при столкновении со стеной или с собой"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Отображается текущий счёт"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Кнопки Старт/Пауза и Заново"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Скорость увеличивается каждые 5 съеденных точек"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <TextBlock Text="Бонус:" FontWeight="Bold" Margin="0,10,0,5" Foreground="#27AE60"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Разные цвета для головы и тела"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Сохранение рекорда"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Режим 'без границ' — змейка появляется с другой стороны"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </Border>

@@ -22,7 +22,7 @@
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Лабиринт можно представить как 2D-массив:
 // 0 = проход (можно идти)
 // 1 = стена (нельзя идти)
@@ -106,7 +106,7 @@ BFS — алгоритм, который находит КРАТЧАЙШИЙ п�
                     <TextBlock Text="💻 Реализация BFS на C#" FontSize="18" FontWeight="Bold" Foreground="#B7950B"/>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="11">
 using System.Collections.Generic;
 
 /// &lt;summary&gt;
@@ -211,7 +211,7 @@ cameFrom:
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 private void GhostAI()
 {
     // Находим путь от призрака до игрока
@@ -267,7 +267,7 @@ private void GameLoop(object? sender, EventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 private void GenerateMaze()
 {
     maze = new int[height, width];
@@ -333,29 +333,79 @@ private void GenerateMaze()
             <Border Background="#FADBD8" CornerRadius="8" Padding="15" BorderBrush="#E74C3C" BorderThickness="2">
                 <StackPanel>
                     <TextBlock Text="📋 Практическое задание: Игра-Лабиринт" FontSize="18" FontWeight="Bold" Foreground="#C0392B"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontSize="13">
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
 Создайте полноценную игру-лабиринт:
                     </TextBlock>
-                    <Border Background="White" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock TextWrapping="Wrap" FontSize="13">
-✅ Игрок (жёлтый квадрат) управляется стрелками
-
-✅ Случайно генерируемый лабиринт с гарантированным путём
-
-✅ Выход отмечен зелёным, при достижении — победа
-
-✅ Кнопка "Новый лабиринт" для генерации нового
-
-✅ Кнопка "Показать путь" визуализирует BFS-путь
-
-✅ Счётчик шагов или таймер прохождения
-
-🌟 Бонус: Добавить призрака, который преследует игрока (BFS)
-
-🌟 Бонус: Несколько уровней сложности (размер лабиринта, плотность стен)
-
-🌟 Бонус: Туман войны — видны только ближайшие клетки
-                        </TextBlock>
+                    
+                    <Border Background="White" CornerRadius="5" Padding="15">
+                        <StackPanel>
+                            <TextBlock Text="Требования:" FontWeight="Bold" Margin="0,0,0,10"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Игрок (жёлтый квадрат) управляется стрелками"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Случайно генерируемый лабиринт с гарантированным путём"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Выход отмечен зелёным, при достижении — победа"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Кнопка 'Новый лабиринт' для генерации нового"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Кнопка 'Показать путь' визуализирует BFS-путь"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Счётчик шагов или таймер прохождения"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <TextBlock Text="Бонус:" FontWeight="Bold" Margin="0,10,0,5" Foreground="#27AE60"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Добавить призрака, преследующего игрока (BFS)"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Несколько уровней сложности"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Туман войны — видны только ближайшие клетки"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </Border>

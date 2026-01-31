@@ -18,7 +18,7 @@ DispatcherTimer — это таймер, который выполняет ко�
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 using System.Windows.Threading;
 
 // Создание таймера
@@ -65,7 +65,7 @@ FPS = 1000 / интервал_в_мс
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 private void GameLoop(object? sender, EventArgs e)
 {
     // 1. ОБНОВЛЕНИЕ СОСТОЯНИЯ
@@ -110,7 +110,7 @@ private void GameLoop(object? sender, EventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Объект движется вправо-вниз
 double velocityX = 4;   // 4 пикселя вправо за кадр
 double velocityY = 3;   // 3 пикселя вниз за кадр
@@ -143,7 +143,7 @@ velocityY = Math.Sin(angle) * speed;
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Проверка границ и отскок
 bool bounced = false;
 
@@ -206,7 +206,7 @@ x = Math.Clamp(x, 0, canvasWidth - ballWidth);
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 using System.Windows.Media;
 
 // Способ 1: Именованная кисть через x:Name
@@ -242,7 +242,7 @@ Color semiTransparent = Color.FromArgb(128, 255, 0, 0);  // 50% прозрачн
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // В XAML: Loaded="Page_Loaded" Unloaded="Page_Unloaded"
 
 private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -299,27 +299,72 @@ private void Page_Unloaded(object sender, RoutedEventArgs e)
             <Border Background="#FADBD8" CornerRadius="8" Padding="15" BorderBrush="#E74C3C" BorderThickness="2">
                 <StackPanel>
                     <TextBlock Text="📋 Практическое задание: DVD-заставка" FontSize="18" FontWeight="Bold" Foreground="#C0392B"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontSize="13">
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
 Создайте классическую DVD-заставку с логотипом:
                     </TextBlock>
-                    <Border Background="White" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock TextWrapping="Wrap" FontSize="13">
-✅ Прямоугольник или изображение "DVD" вместо круга
-
-✅ Движение по диагонали с отскоком от всех стен
-
-✅ Смена на случайный цвет при каждом отскоке
-
-✅ Счётчик отскоков
-
-✅ Кнопки Старт/Стоп и Сброс
-
-✅ Ползунок для изменения скорости в реальном времени
-
-🌟 Бонус: Особый эффект, когда логотип попадает точно в угол (это редкое событие!)
-
-🌟 Бонус: Добавить несколько мячей одновременно
-                        </TextBlock>
+                    
+                    <Border Background="White" CornerRadius="5" Padding="15">
+                        <StackPanel>
+                            <TextBlock Text="Требования:" FontWeight="Bold" Margin="0,0,0,10"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Прямоугольник или изображение 'DVD' вместо круга"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Движение по диагонали с отскоком от всех стен"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Смена на случайный цвет при каждом отскоке"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Счётчик отскоков"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Кнопки Старт/Стоп и Сброс"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Ползунок для изменения скорости в реальном времени"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <TextBlock Text="Бонус:" FontWeight="Bold" Margin="0,10,0,5" Foreground="#27AE60"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Особый эффект при попадании точно в угол"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Добавить несколько мячей одновременно"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </Border>

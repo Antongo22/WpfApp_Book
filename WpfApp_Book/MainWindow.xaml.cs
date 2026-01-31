@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using WpfApp_Book.Chapters.Chapter1_Introduction.Demo;
 using WpfApp_Book.Chapters.Chapter2_PagesAndWindows.Demo;
 using WpfApp_Book.Chapters.Chapter3_Keyboard.Demo;

@@ -20,7 +20,7 @@ Canvas — это панель, которая позволяет размеща
                     
                     <TextBlock Text="Основные свойства:" FontWeight="SemiBold" Margin="0,5,0,5"/>
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 &lt;!-- В XAML: --&gt;
 &lt;Canvas&gt;
     &lt;Rectangle Canvas.Left="50" Canvas.Top="30" Width="100" Height="50"/&gt;
@@ -58,7 +58,7 @@ double y = Canvas.GetTop(myElement);   // Получить текущую Y
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
        (0,0) ─────────────────► X увеличивается
          │
          │   ┌─────────────────────┐
@@ -83,7 +83,7 @@ distance = √((x₂ - x₁)² + (y₂ - y₁)²)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Расчёт расстояния между центрами двух элементов
 double x1 = Canvas.GetLeft(element1) + element1.Width / 2;
 double y1 = Canvas.GetTop(element1) + element1.Height / 2;
@@ -120,7 +120,7 @@ Drag-and-Drop состоит из трёх этапов:
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 // Поля класса
 private bool isDragging = false;
 private Point clickOffset;              // Смещение клика от угла элемента
@@ -198,7 +198,7 @@ private void Element_MouseUp(object sender, MouseButtonEventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
 private void Element_MouseMove(object sender, MouseEventArgs e)
 {
     if (!isDragging || draggedElement == null) return;
@@ -258,25 +258,65 @@ private void Element_MouseMove(object sender, MouseEventArgs e)
             <Border Background="#FADBD8" CornerRadius="8" Padding="15" BorderBrush="#E74C3C" BorderThickness="2">
                 <StackPanel>
                     <TextBlock Text="📋 Практическое задание: Drag-and-drop редактор" FontSize="18" FontWeight="Bold" Foreground="#C0392B"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontSize="13">
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
 Создайте приложение с Canvas, где можно перетаскивать несколько фигур:
                     </TextBlock>
-                    <Border Background="White" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock TextWrapping="Wrap" FontSize="13">
-✅ Минимум 4-5 фигур разных цветов на Canvas
-
-✅ При перетаскивании отображать координаты выбранного элемента
-
-✅ Отображать расстояние от текущего элемента до центра Canvas
-
-✅ При пересечении двух фигур — менять цвет одной из них (определение коллизии)
-
-✅ Не давать элементам выходить за границы Canvas
-
-🌟 Бонус: добавить кнопку "Сброс", которая возвращает все элементы на исходные позиции
-
-🌟 Бонус: добавить "притягивание" к сетке (snap to grid) с шагом 20px
-                        </TextBlock>
+                    
+                    <Border Background="White" CornerRadius="5" Padding="15">
+                        <StackPanel>
+                            <TextBlock Text="Требования:" FontWeight="Bold" Margin="0,0,0,10"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Минимум 4-5 фигур разных цветов на Canvas"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="При перетаскивании отображать координаты элемента"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Отображать расстояние от элемента до центра Canvas"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="При пересечении фигур — менять цвет (коллизия)"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Не давать элементам выходить за границы Canvas"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <TextBlock Text="Бонус:" FontWeight="Bold" Margin="0,10,0,5" Foreground="#27AE60"/>
+                            
+                            <StackPanel Margin="0,0,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Кнопка 'Сброс' — вернуть элементы на исходные позиции"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌟" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Притягивание к сетке (snap to grid) с шагом 20px"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </Border>
