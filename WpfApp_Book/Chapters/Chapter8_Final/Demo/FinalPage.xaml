@@ -3,66 +3,341 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Глава 8: Финал">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
-        <StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
             <TextBlock Text="Глава 8: Компиляция и финальный проект" 
                        FontSize="28" FontWeight="Bold" Margin="0,0,0,20" Foreground="#2E86AB"/>
             
+            <!-- Поздравление -->
             <Border Background="#D5F5E3" CornerRadius="8" Padding="20" Margin="0,0,0,20">
                 <StackPanel>
-                    <TextBlock Text="🎉 Поздравляем!" FontSize="24" FontWeight="Bold" 
+                    <TextBlock Text="🎉 Поздравляем!" FontSize="28" FontWeight="Bold" 
                                Foreground="#27AE60" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Вы изучили основы WPF!" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                    <TextBlock Text="Вы изучили все основы WPF для создания игр и интерактивных приложений!" 
+                               FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap"/>
                 </StackPanel>
             </Border>
 
+            <!-- Секция 1: Публикация приложения -->
             <Border Background="#F0F4F8" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
-                    <TextBlock Text="📦 Публикация" FontSize="18" FontWeight="Bold" Foreground="#1A5276"/>
-                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11">
-                            dotnet publish -c Release&#x0a;dotnet publish -c Release --self-contained -r win-x64&#x0a;dotnet publish -c Release --self-contained -r win-x64 /p:PublishSingleFile=true
+                    <TextBlock Text="📦 Публикация приложения" FontSize="18" FontWeight="Bold" Foreground="#1A5276"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+Когда приложение готово, его нужно скомпилировать для распространения. 
+В .NET есть несколько режимов публикации:
+                    </TextBlock>
+                    
+                    <TextBlock Text="Основные команды:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+# 1. Простая публикация (требует .NET на компьютере пользователя)
+dotnet publish -c Release
+
+# 2. Self-contained — все файлы .NET включены
+#    Пользователю не нужно устанавливать .NET
+dotnet publish -c Release --self-contained -r win-x64
+
+# 3. Один исполняемый файл (все DLL упакованы внутрь)
+dotnet publish -c Release --self-contained -r win-x64 /p:PublishSingleFile=true
+
+# 4. С обрезкой неиспользуемого кода (меньше размер)
+dotnet publish -c Release --self-contained -r win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true
+                        </TextBlock>
+                    </Border>
+                    
+                    <TextBlock Text="Параметры:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                    <Border Background="#EBF5FB" CornerRadius="4" Padding="10">
+                        <TextBlock TextWrapping="Wrap" FontSize="13">
+• -c Release — компиляция в режиме Release (оптимизированный код)
+• --self-contained — включить все файлы .NET runtime
+• -r win-x64 — целевая платформа (также: win-x86, win-arm64)
+• /p:PublishSingleFile=true — упаковать в один .exe файл
+• /p:PublishTrimmed=true — удалить неиспользуемый код
+
+Результат будет в папке: bin/Release/net8.0-windows/win-x64/publish/
                         </TextBlock>
                     </Border>
                 </StackPanel>
             </Border>
 
-            <Border Background="#F0F4F8" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <!-- Секция 2: Структура проекта -->
+            <Border Background="#E8F6F3" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
-                    <TextBlock Text="📚 Что изучили" FontSize="18" FontWeight="Bold" Foreground="#1A5276"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontSize="13">
-                        1. Компоненты: Button, TextBlock, TextBox&#x0a;
-                        2. Окна и страницы: Window, Page, Frame, MessageBox&#x0a;
-                        3. Клавиатура: KeyDown, модификаторы, комбинации&#x0a;
-                        4. Размещение: Canvas, Drag-and-Drop, координаты&#x0a;
-                        5. Анимация: DispatcherTimer, движение, отскок&#x0a;
-                        6. Управление: стрелки, связанные объекты&#x0a;
-                        7. Графы: BFS, поиск пути&#x0a;
-                        8. Компиляция: публикация, оптимизация
+                    <TextBlock Text="📁 Рекомендуемая структура проекта" FontSize="18" FontWeight="Bold" Foreground="#1E8449"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+Для больших проектов важно организовать код логически:
                     </TextBlock>
+                    
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+MyGame/
+├── App.xaml                    # Точка входа приложения
+├── App.xaml.cs
+├── MainWindow.xaml             # Главное окно
+├── MainWindow.xaml.cs
+│
+├── Models/                     # Классы данных (игровые объекты)
+│   ├── Player.cs
+│   ├── Enemy.cs
+│   └── GameState.cs
+│
+├── Views/                      # Страницы и окна
+│   ├── MenuPage.xaml
+│   ├── GamePage.xaml
+│   └── SettingsPage.xaml
+│
+├── Helpers/                    # Вспомогательные классы
+│   ├── CollisionHelper.cs
+│   └── PathfindingHelper.cs
+│
+├── Resources/                  # Ресурсы
+│   ├── Images/
+│   ├── Sounds/
+│   └── Styles.xaml
+│
+└── README.md                   # Описание проекта
+                        </TextBlock>
+                    </Border>
                 </StackPanel>
             </Border>
 
-            <Border Background="#FADBD8" CornerRadius="8" Padding="20" BorderBrush="#E74C3C" BorderThickness="3">
+            <!-- Секция 3: Подведение итогов -->
+            <Border Background="#FEF9E7" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="📚 Что вы изучили" FontSize="18" FontWeight="Bold" Foreground="#B7950B"/>
+                    
+                    <Grid Margin="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Глава 1 -->
+                        <Border Grid.Row="0" Grid.Column="0" Background="#FADBD8" CornerRadius="5" Padding="10" Margin="0,0,5,5">
+                            <StackPanel>
+                                <TextBlock Text="Глава 1: Компоненты" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• Button, TextBlock, Label" FontSize="11"/>
+                                <TextBlock Text="• TextBox, события Click" FontSize="11"/>
+                                <TextBlock Text="• Обработка TextChanged" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Глава 2 -->
+                        <Border Grid.Row="0" Grid.Column="1" Background="#D4E6F1" CornerRadius="5" Padding="10" Margin="5,0,0,5">
+                            <StackPanel>
+                                <TextBlock Text="Глава 2: Окна и страницы" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• Window vs Page" FontSize="11"/>
+                                <TextBlock Text="• Frame, TabControl" FontSize="11"/>
+                                <TextBlock Text="• MessageBox, ShowDialog" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Глава 3 -->
+                        <Border Grid.Row="1" Grid.Column="0" Background="#D5F5E3" CornerRadius="5" Padding="10" Margin="0,5,5,5">
+                            <StackPanel>
+                                <TextBlock Text="Глава 3: Клавиатура" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• KeyDown, KeyUp события" FontSize="11"/>
+                                <TextBlock Text="• Key enum, модификаторы" FontSize="11"/>
+                                <TextBlock Text="• Focusable, Focus()" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Глава 4 -->
+                        <Border Grid.Row="1" Grid.Column="1" Background="#FCF3CF" CornerRadius="5" Padding="10" Margin="5,5,0,5">
+                            <StackPanel>
+                                <TextBlock Text="Глава 4: Размещение" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• Canvas, координаты" FontSize="11"/>
+                                <TextBlock Text="• Drag-and-Drop" FontSize="11"/>
+                                <TextBlock Text="• Расчёт расстояния" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Глава 5 -->
+                        <Border Grid.Row="2" Grid.Column="0" Background="#E8DAEF" CornerRadius="5" Padding="10" Margin="0,5,5,5">
+                            <StackPanel>
+                                <TextBlock Text="Глава 5: Анимация" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• DispatcherTimer" FontSize="11"/>
+                                <TextBlock Text="• Игровой цикл (Game Loop)" FontSize="11"/>
+                                <TextBlock Text="• Физика отскока" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Глава 6 -->
+                        <Border Grid.Row="2" Grid.Column="1" Background="#FADBD8" CornerRadius="5" Padding="10" Margin="5,5,0,5">
+                            <StackPanel>
+                                <TextBlock Text="Глава 6: Управление" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• Управление стрелками" FontSize="11"/>
+                                <TextBlock Text="• Связанные объекты (змейка)" FontSize="11"/>
+                                <TextBlock Text="• List для хранения позиций" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Глава 7 -->
+                        <Border Grid.Row="3" Grid.Column="0" Background="#D4E6F1" CornerRadius="5" Padding="10" Margin="0,5,5,0">
+                            <StackPanel>
+                                <TextBlock Text="Глава 7: Графы" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• 2D-массив как карта" FontSize="11"/>
+                                <TextBlock Text="• BFS — поиск пути" FontSize="11"/>
+                                <TextBlock Text="• ИИ преследования" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Глава 8 -->
+                        <Border Grid.Row="3" Grid.Column="1" Background="#D5F5E3" CornerRadius="5" Padding="10" Margin="5,5,0,0">
+                            <StackPanel>
+                                <TextBlock Text="Глава 8: Публикация" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="• dotnet publish" FontSize="11"/>
+                                <TextBlock Text="• Self-contained режим" FontSize="11"/>
+                                <TextBlock Text="• Структура проекта" FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Секция 4: Советы для дальнейшего развития -->
+            <Border Background="#F5EEF8" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="🚀 Куда двигаться дальше" FontSize="18" FontWeight="Bold" Foreground="#8E44AD"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+Вы освоили основы. Вот направления для развития:
+                    </TextBlock>
+                    
+                    <Border Background="White" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock TextWrapping="Wrap" FontSize="13">
+🎮 <Bold>Игровая разработка:</Bold>
+• Изучите спрайты и изображения (Image, BitmapImage)
+• Добавьте звуки (MediaPlayer, SoundPlayer)
+• Изучите алгоритм A* для более эффективного поиска пути
+• Попробуйте Unity или MonoGame для серьёзных игр
+
+📱 <Bold>Приложения:</Bold>
+• MVVM паттерн для больших проектов
+• Data Binding — связывание данных с UI
+• Styles и Templates для красивого дизайна
+• Работа с файлами и базами данных
+
+⚡ <Bold>Оптимизация:</Bold>
+• Используйте WriteableBitmap для быстрой графики
+• Минимизируйте создание объектов в игровом цикле
+• Профилируйте код для поиска узких мест
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Секция 5: Полезные паттерны -->
+            <Border Background="#EAEDED" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="🔧 Полезные паттерны для игр" FontSize="18" FontWeight="Bold" Foreground="#566573"/>
+                    
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11">
+// Паттерн: Состояние игры
+public enum GameState { Menu, Playing, Paused, GameOver }
+private GameState currentState = GameState.Menu;
+
+private void GameLoop(object? sender, EventArgs e)
+{
+    switch (currentState)
+    {
+        case GameState.Playing:
+            UpdateGame();
+            break;
+        case GameState.Paused:
+            // Ничего не делаем
+            break;
+        case GameState.GameOver:
+            ShowGameOverScreen();
+            break;
+    }
+}
+
+// Паттерн: Класс для игрового объекта
+public class GameObject
+{
+    public double X { get; set; }
+    public double Y { get; set; }
+    public double Width { get; set; }
+    public double Height { get; set; }
+    public double VelocityX { get; set; }
+    public double VelocityY { get; set; }
+    
+    public void Update()
+    {
+        X += VelocityX;
+        Y += VelocityY;
+    }
+    
+    public bool CollidesWith(GameObject other)
+    {
+        return X &lt; other.X + other.Width &amp;&amp;
+               X + Width &gt; other.X &amp;&amp;
+               Y &lt; other.Y + other.Height &amp;&amp;
+               Y + Height &gt; other.Y;
+    }
+}
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Финальное задание -->
+            <Border Background="#FADBD8" CornerRadius="8" Padding="20" BorderBrush="#E74C3C" BorderThickness="3" Margin="0,0,0,15">
                 <StackPanel>
                     <TextBlock Text="🏆 ФИНАЛЬНОЕ ЗАДАНИЕ: Pac-Man" 
-                               FontSize="22" FontWeight="Bold" Foreground="#C0392B" HorizontalAlignment="Center"/>
+                               FontSize="24" FontWeight="Bold" Foreground="#C0392B" HorizontalAlignment="Center"/>
                     
                     <TextBlock TextWrapping="Wrap" Margin="0,15,0,0" FontSize="14" TextAlignment="Center">
-                        Создайте Pac-Man, используя все изученные концепции!
+Создайте свою версию классической игры Pac-Man, используя все изученные концепции!
                     </TextBlock>
                     
                     <Border Background="White" CornerRadius="8" Padding="15" Margin="0,15,0,0">
-                        <TextBlock TextWrapping="Wrap" FontSize="13">
-                            ✅ Лабиринт (двумерный массив)&#x0a;
-                            ✅ Pac-Man со стрелками&#x0a;
-                            ✅ Точки для сбора (счёт)&#x0a;
-                            ✅ Призрак, преследующий игрока (BFS)&#x0a;
-                            ✅ Столкновение = проигрыш&#x0a;
-                            ✅ Все точки = победа&#x0a;&#x0a;
-                            Бонусы: уровни, power-up, звуки, рекорды
-                        </TextBlock>
+                        <StackPanel>
+                            <TextBlock Text="Обязательные требования:" FontWeight="Bold" FontSize="14" Foreground="#C0392B"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="13" Margin="0,10,0,0">
+✅ Лабиринт на основе двумерного массива (Глава 7)
+
+✅ Pac-Man управляется стрелками или WASD (Главы 3, 6)
+
+✅ Точки для сбора — при сборе всех = победа (Глава 6)
+
+✅ Минимум один призрак, преследующий игрока с помощью BFS (Глава 7)
+
+✅ Столкновение с призраком = проигрыш (Глава 4)
+
+✅ Игровой цикл с DispatcherTimer (Глава 5)
+
+✅ Отображение счёта и состояния игры (Глава 1)
+                            </TextBlock>
+                            
+                            <TextBlock Text="Бонусные задания:" FontWeight="Bold" FontSize="14" Foreground="#27AE60" Margin="0,15,0,0"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="13" Margin="0,10,0,0">
+🌟 Power-up точки — Pac-Man временно может есть призраков
+
+🌟 Несколько призраков с разным поведением
+
+🌟 Несколько уровней с разными лабиринтами
+
+🌟 Звуковые эффекты
+
+🌟 Анимация движения персонажей
+
+🌟 Таблица рекордов
+
+🌟 Меню с кнопками Старт, Настройки, Выход
+                            </TextBlock>
+                        </StackPanel>
                     </Border>
+                    
+                    <TextBlock Text="Удачи! 🎮" FontSize="24" FontWeight="Bold" 
+                               Foreground="#27AE60" HorizontalAlignment="Center" Margin="0,20,0,0"/>
                 </StackPanel>
             </Border>
         </StackPanel>

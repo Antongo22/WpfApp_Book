@@ -4,55 +4,280 @@
       Title="Глава 4: Размещение">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
-        <StackPanel>
-            <TextBlock Text="Глава 4: Размещение и Drag-and-Drop" 
+        <StackPanel Margin="20">
+            <TextBlock Text="Глава 4: Размещение объектов и Drag-and-Drop" 
                        FontSize="28" FontWeight="Bold" Margin="0,0,0,20" Foreground="#2E86AB"/>
             
+            <!-- Секция 1: Canvas -->
             <Border Background="#F0F4F8" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
-                    <TextBlock Text="📐 Canvas" FontSize="18" FontWeight="Bold" Foreground="#1A5276"/>
-                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11">
-                            Canvas.SetLeft(element, x);&#x0a;Canvas.SetTop(element, y);&#x0a;double x = Canvas.GetLeft(element);
+                    <TextBlock Text="📐 Панель Canvas — абсолютное позиционирование" FontSize="18" FontWeight="Bold" Foreground="#1A5276"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+Canvas — это панель, которая позволяет размещать элементы по точным координатам (X, Y).
+В отличие от Grid или StackPanel, Canvas не управляет расположением автоматически — 
+вы полностью контролируете позицию каждого элемента. Это идеально для игр, редакторов и анимации.
+                    </TextBlock>
+                    
+                    <TextBlock Text="Основные свойства:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+&lt;!-- В XAML: --&gt;
+&lt;Canvas&gt;
+    &lt;Rectangle Canvas.Left="50" Canvas.Top="30" Width="100" Height="50"/&gt;
+    &lt;Ellipse Canvas.Left="200" Canvas.Top="100" Width="80" Height="80"/&gt;
+&lt;/Canvas&gt;
+
+// В C#:
+Canvas.SetLeft(myElement, 150);   // X-координата (от левого края)
+Canvas.SetTop(myElement, 75);     // Y-координата (от верхнего края)
+
+double x = Canvas.GetLeft(myElement);  // Получить текущую X
+double y = Canvas.GetTop(myElement);   // Получить текущую Y
+                        </TextBlock>
+                    </Border>
+                    
+                    <TextBlock Text="⚠️ Важно:" FontWeight="SemiBold" Foreground="#E74C3C"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="13" Margin="0,5,0,0">
+• Canvas.Left/Top — это attached properties (присоединяемые свойства)
+• Координаты считаются от левого верхнего угла Canvas
+• Canvas НЕ имеет автоматического размера — задавайте Width/Height или ClipToBounds="True"
+• Элементы могут выходить за границы Canvas, если не использовать ClipToBounds
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <!-- Секция 2: Система координат -->
+            <Border Background="#E8F6F3" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="🎯 Система координат WPF" FontSize="18" FontWeight="Bold" Foreground="#1E8449"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+В WPF координаты работают следующим образом:
+• Точка (0, 0) находится в левом верхнем углу
+• Ось X увеличивается вправо
+• Ось Y увеличивается ВНИЗ (это важно! В математике Y идёт вверх)
+                    </TextBlock>
+                    
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+       (0,0) ─────────────────► X увеличивается
+         │
+         │   ┌─────────────────────┐
+         │   │     Canvas          │
+         │   │  (50,30)            │
+         │   │     ■               │
+         │   │                     │
+         ▼   └─────────────────────┘
+    Y увеличивается
                         </TextBlock>
                     </Border>
                 </StackPanel>
             </Border>
 
+            <!-- Секция 3: Расчёт расстояния -->
             <Border Background="#FEF9E7" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
-                    <TextBlock Text="🖐️ Drag-and-Drop" FontSize="18" FontWeight="Bold" Foreground="#B7950B"/>
-                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11">
-                            MouseDown: isDragging = true; element.CaptureMouse();&#x0a;MouseMove: if(isDragging) Canvas.SetLeft(...);&#x0a;MouseUp: isDragging = false; element.ReleaseMouseCapture();
+                    <TextBlock Text="📏 Расчёт расстояния между объектами" FontSize="18" FontWeight="Bold" Foreground="#B7950B"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+Для определения расстояния между двумя точками используется теорема Пифагора:
+distance = √((x₂ - x₁)² + (y₂ - y₁)²)
+                    </TextBlock>
+                    
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+// Расчёт расстояния между центрами двух элементов
+double x1 = Canvas.GetLeft(element1) + element1.Width / 2;
+double y1 = Canvas.GetTop(element1) + element1.Height / 2;
+double x2 = Canvas.GetLeft(element2) + element2.Width / 2;
+double y2 = Canvas.GetTop(element2) + element2.Height / 2;
+
+double distance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+
+// Проверка столкновения (для прямоугольников)
+bool isColliding = Math.Abs(x2 - x1) &lt; (w1 + w2) / 2 &amp;&amp; 
+                   Math.Abs(y2 - y1) &lt; (h1 + h2) / 2;
+                        </TextBlock>
+                    </Border>
+                    
+                    <TextBlock Text="Применение:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="13">
+• Определение столкновений в играх
+• Притягивание объектов (snap-to-grid)
+• Создание зон влияния
+• Ограничение области перемещения
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <!-- Секция 4: Drag-and-Drop -->
+            <Border Background="#F5EEF8" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="🖐️ Реализация Drag-and-Drop" FontSize="18" FontWeight="Bold" Foreground="#8E44AD"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+Drag-and-Drop состоит из трёх этапов:
+1. MouseDown — начало перетаскивания (захват мыши)
+2. MouseMove — перемещение элемента за курсором
+3. MouseUp — завершение перетаскивания (освобождение мыши)
+                    </TextBlock>
+                    
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+// Поля класса
+private bool isDragging = false;
+private Point clickOffset;              // Смещение клика от угла элемента
+private UIElement? draggedElement;
+
+// 1. Начало перетаскивания
+private void Element_MouseDown(object sender, MouseButtonEventArgs e)
+{
+    var element = sender as UIElement;
+    if (element == null) return;
+    
+    draggedElement = element;
+    isDragging = true;
+    
+    // Запоминаем, где кликнули внутри элемента
+    clickOffset = e.GetPosition(element);
+    
+    // ВАЖНО: захватываем мышь, чтобы получать события
+    // даже когда курсор выходит за пределы элемента
+    element.CaptureMouse();
+}
+
+// 2. Перемещение
+private void Element_MouseMove(object sender, MouseEventArgs e)
+{
+    if (!isDragging || draggedElement == null) return;
+    
+    // Получаем позицию мыши относительно Canvas
+    Point mousePos = e.GetPosition(myCanvas);
+    
+    // Вычисляем новую позицию элемента
+    // (с учётом того, где кликнули внутри элемента)
+    double newX = mousePos.X - clickOffset.X;
+    double newY = mousePos.Y - clickOffset.Y;
+    
+    // Перемещаем элемент
+    Canvas.SetLeft(draggedElement, newX);
+    Canvas.SetTop(draggedElement, newY);
+}
+
+// 3. Завершение
+private void Element_MouseUp(object sender, MouseButtonEventArgs e)
+{
+    if (draggedElement != null)
+    {
+        draggedElement.ReleaseMouseCapture();  // Освобождаем мышь
+    }
+    isDragging = false;
+    draggedElement = null;
+}
+                        </TextBlock>
+                    </Border>
+                    
+                    <TextBlock Text="Ключевые моменты:" FontWeight="SemiBold" Foreground="#8E44AD" Margin="0,10,0,5"/>
+                    <Border Background="White" CornerRadius="4" Padding="10">
+                        <TextBlock TextWrapping="Wrap" FontSize="13">
+• CaptureMouse() — захватывает мышь для элемента. Все события мыши будут приходить этому элементу, даже если курсор выйдет за его границы. Без этого при быстром движении элемент "отстанет".
+
+• ReleaseMouseCapture() — освобождает захват мыши.
+
+• clickOffset — смещение точки клика от левого верхнего угла элемента. Без него элемент будет "прыгать" так, чтобы его угол оказался под курсором.
+
+• e.GetPosition(canvas) — координаты мыши относительно указанного элемента.
                         </TextBlock>
                     </Border>
                 </StackPanel>
             </Border>
 
-            <Border Background="#D5F5E3" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <!-- Секция 5: Ограничение области -->
+            <Border Background="#EAEDED" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
-                    <TextBlock Text="🎮 Демонстрация" FontSize="18" FontWeight="Bold" Foreground="#27AE60"/>
-                    <Canvas x:Name="DemoCanvas" Background="White" Height="200" Margin="0,10,0,0" ClipToBounds="True">
-                        <Border x:Name="BlueBox" Canvas.Left="50" Canvas.Top="50" Width="60" Height="60" 
-                                Background="#3498DB" CornerRadius="5" Cursor="Hand"
-                                MouseDown="Box_MouseDown" MouseMove="Box_MouseMove" MouseUp="Box_MouseUp"/>
-                        <Border x:Name="RedBox" Canvas.Left="200" Canvas.Top="80" Width="60" Height="60" 
-                                Background="#E74C3C" CornerRadius="5" Cursor="Hand"
-                                MouseDown="Box_MouseDown" MouseMove="Box_MouseMove" MouseUp="Box_MouseUp"/>
-                    </Canvas>
-                    <TextBlock x:Name="DistanceText" Text="Расстояние: —" Margin="0,10,0,0"/>
+                    <TextBlock Text="🚧 Ограничение области перемещения" FontSize="18" FontWeight="Bold" Foreground="#566573"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+Часто нужно не дать элементу выйти за границы Canvas:
+                    </TextBlock>
+                    
+                    <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <TextBlock FontFamily="Consolas" Foreground="White" FontSize="12">
+private void Element_MouseMove(object sender, MouseEventArgs e)
+{
+    if (!isDragging || draggedElement == null) return;
+    
+    Point mousePos = e.GetPosition(myCanvas);
+    double newX = mousePos.X - clickOffset.X;
+    double newY = mousePos.Y - clickOffset.Y;
+    
+    // Получаем размеры элемента
+    var fe = draggedElement as FrameworkElement;
+    double elemWidth = fe?.ActualWidth ?? 0;
+    double elemHeight = fe?.ActualHeight ?? 0;
+    
+    // Ограничиваем координаты
+    newX = Math.Clamp(newX, 0, myCanvas.ActualWidth - elemWidth);
+    newY = Math.Clamp(newY, 0, myCanvas.ActualHeight - elemHeight);
+    
+    Canvas.SetLeft(draggedElement, newX);
+    Canvas.SetTop(draggedElement, newY);
+}
+                        </TextBlock>
+                    </Border>
                 </StackPanel>
             </Border>
 
+            <!-- Демонстрация -->
+            <Border Background="#D5F5E3" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="🎮 Демонстрация: Перетаскивание с расстоянием" FontSize="18" FontWeight="Bold" Foreground="#27AE60"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,5" FontSize="13">
+Перетаскивайте синий и красный квадраты мышью. Расстояние между их центрами вычисляется в реальном времени:
+                    </TextBlock>
+                    
+                    <Canvas x:Name="DemoCanvas" Background="White" Height="200" Margin="0,10,0,0" ClipToBounds="True">
+                        <Border x:Name="BlueBox" Canvas.Left="50" Canvas.Top="70" Width="60" Height="60" 
+                                Background="#3498DB" CornerRadius="5" Cursor="Hand"
+                                MouseDown="Box_MouseDown" MouseMove="Box_MouseMove" MouseUp="Box_MouseUp">
+                            <TextBlock Text="A" Foreground="White" FontWeight="Bold" FontSize="20" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border x:Name="RedBox" Canvas.Left="250" Canvas.Top="70" Width="60" Height="60" 
+                                Background="#E74C3C" CornerRadius="5" Cursor="Hand"
+                                MouseDown="Box_MouseDown" MouseMove="Box_MouseMove" MouseUp="Box_MouseUp">
+                            <TextBlock Text="B" Foreground="White" FontWeight="Bold" FontSize="20" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Canvas>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock x:Name="DistanceText" Text="Расстояние: —" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock x:Name="CoordinatesText" Text="" Margin="20,0,0,0" Foreground="#7F8C8D" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Практическое задание -->
             <Border Background="#FADBD8" CornerRadius="8" Padding="15" BorderBrush="#E74C3C" BorderThickness="2">
                 <StackPanel>
-                    <TextBlock Text="📋 Задание: Drag-and-drop с расстоянием" FontSize="18" FontWeight="Bold" Foreground="#C0392B"/>
+                    <TextBlock Text="📋 Практическое задание: Drag-and-drop редактор" FontSize="18" FontWeight="Bold" Foreground="#C0392B"/>
                     <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontSize="13">
-                        • 4-5 квадратов на Canvas&#x0a;
-                        • Отображать расстояние до центра&#x0a;
-                        • При пересечении менять цвет
+Создайте приложение с Canvas, где можно перетаскивать несколько фигур:
                     </TextBlock>
+                    <Border Background="White" CornerRadius="4" Padding="10" Margin="0,10,0,0">
+                        <TextBlock TextWrapping="Wrap" FontSize="13">
+✅ Минимум 4-5 фигур разных цветов на Canvas
+
+✅ При перетаскивании отображать координаты выбранного элемента
+
+✅ Отображать расстояние от текущего элемента до центра Canvas
+
+✅ При пересечении двух фигур — менять цвет одной из них (определение коллизии)
+
+✅ Не давать элементам выходить за границы Canvas
+
+🌟 Бонус: добавить кнопку "Сброс", которая возвращает все элементы на исходные позиции
+
+🌟 Бонус: добавить "притягивание" к сетке (snap to grid) с шагом 20px
+                        </TextBlock>
+                    </Border>
                 </StackPanel>
             </Border>
         </StackPanel>
