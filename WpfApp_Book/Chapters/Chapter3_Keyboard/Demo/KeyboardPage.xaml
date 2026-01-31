@@ -44,7 +44,7 @@ WPF предоставляет несколько событий для рабо
                     </Border>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;!-- XAML: обязательно Focusable="True" --&gt;
 &lt;Page Focusable="True" 
       Loaded="Page_Loaded" 
@@ -110,7 +110,7 @@ private void Page_KeyDown(object sender, KeyEventArgs e)
                     </Grid>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 private void Page_KeyDown(object sender, KeyEventArgs e)
 {
     switch (e.Key)
@@ -145,7 +145,7 @@ private void Page_KeyDown(object sender, KeyEventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 using System.Windows.Input;
 
 private void Page_KeyDown(object sender, KeyEventArgs e)
@@ -192,7 +192,7 @@ KeyDown срабатывает при первом нажатии и затем 
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="11">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="11">
 // В игровом цикле (таймер) проверяем состояние клавиш
 private void GameLoop(object? sender, EventArgs e)
 {

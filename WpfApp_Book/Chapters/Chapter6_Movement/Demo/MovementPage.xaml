@@ -18,7 +18,7 @@
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // XAML: Focusable="True" KeyDown="Page_KeyDown"
 // В Loaded: this.Focus();
 
@@ -62,7 +62,7 @@ private void Page_KeyDown(object sender, KeyEventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // СПОСОБ 1: Мгновенное перемещение (Sokoban, шахматы)
 // Клавиша сразу меняет позицию
 case Key.Up: y -= step; break;
@@ -102,7 +102,7 @@ switch (currentDirection)
                     </StackPanel>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Список позиций сегментов змейки
 // snakeBody[0] — голова, snakeBody[n-1] — хвост
 private List&lt;Point&gt; snakeBody = new List&lt;Point&gt;();
@@ -165,7 +165,7 @@ private void GameLoop(object? sender, EventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Проверка столкновения с границами
 if (newHead.X &lt; 0 || newHead.Y &lt; 0 || 
     newHead.X &gt;= canvasWidth || newHead.Y &gt;= canvasHeight)
@@ -205,7 +205,7 @@ if (snakeBody.Skip(1).Contains(newHead))
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Данные (логика игры)
 private List&lt;Point&gt; snakeBody = new List&lt;Point&gt;();
 

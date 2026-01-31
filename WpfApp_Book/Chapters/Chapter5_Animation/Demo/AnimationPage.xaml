@@ -18,7 +18,7 @@ DispatcherTimer — это таймер, который выполняет ко�
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 using System.Windows.Threading;
 
 // Создание таймера
@@ -64,7 +64,7 @@ private void GameLoop(object? sender, EventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 private void GameLoop(object? sender, EventArgs e)
 {
     // 1. ОБНОВЛЕНИЕ СОСТОЯНИЯ
@@ -109,7 +109,7 @@ private void GameLoop(object? sender, EventArgs e)
                     </StackPanel>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Объект движется вправо-вниз
 double velocityX = 4;   // 4 пикселя вправо за кадр
 double velocityY = 3;   // 3 пикселя вниз за кадр
@@ -142,7 +142,7 @@ velocityY = Math.Sin(angle) * speed;
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Проверка границ и отскок
 bool bounced = false;
 
@@ -205,7 +205,7 @@ x = Math.Clamp(x, 0, canvasWidth - ballWidth);
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 using System.Windows.Media;
 
 // Способ 1: Именованная кисть через x:Name
@@ -241,7 +241,7 @@ Color semiTransparent = Color.FromArgb(128, 255, 0, 0);  // 50% прозрачн
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // В XAML: Loaded="Page_Loaded" Unloaded="Page_Unloaded"
 
 private void Page_Loaded(object sender, RoutedEventArgs e)

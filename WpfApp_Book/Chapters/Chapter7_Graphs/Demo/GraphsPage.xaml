@@ -23,7 +23,7 @@
                     </StackPanel>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Лабиринт можно представить как 2D-массив:
 // 0 = проход (можно идти)
 // 1 = стена (нельзя идти)
@@ -107,7 +107,7 @@ BFS — алгоритм, который находит КРАТЧАЙШИЙ п�
                     <TextBlock Text="💻 Реализация BFS на C#" FontSize="18" FontWeight="Bold" Foreground="#B7950B"/>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="11">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="11">
 using System.Collections.Generic;
 
 /// &lt;summary&gt;
@@ -212,7 +212,7 @@ cameFrom:
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 private void GhostAI()
 {
     // Находим путь от призрака до игрока
@@ -268,7 +268,7 @@ private void GameLoop(object? sender, EventArgs e)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 private void GenerateMaze()
 {
     maze = new int[height, width];

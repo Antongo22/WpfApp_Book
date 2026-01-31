@@ -20,7 +20,7 @@ Button — элемент управления, который реагируе�
                     
                     <TextBlock Text="Основные свойства:" FontWeight="SemiBold" Margin="0,5,0,5"/>
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;Button Content="Нажми меня"      // Текст кнопки
         Width="100" Height="30"   // Размеры
         Margin="5,10,5,10"        // Отступы (лево, верх, право, низ)
@@ -55,7 +55,7 @@ Label — обёртка с дополнительными возможност�
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;TextBlock Text="Простой текст"
            FontSize="14"              // Размер шрифта
            FontWeight="Bold"          // Жирность
@@ -88,7 +88,7 @@ TextBox — поле для ввода текста пользователем. 
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;TextBox x:Name="MyTextBox"
          Text="Начальный текст"    // Текст в поле
          Width="200"
@@ -122,7 +122,7 @@ CheckBox — элемент с двумя или тремя состояниям
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;CheckBox x:Name="MyCheckBox"
           Content="Согласен с условиями"  // Текст рядом с флажком
           IsChecked="True"                // True/False/null (для IsThreeState)
@@ -160,7 +160,7 @@ RadioButton — позволяет выбрать только ОДИН вари
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;!-- Группа 1: Размер --&gt;
 &lt;RadioButton Content="Маленький" GroupName="Size" IsChecked="True"/&gt;
 &lt;RadioButton Content="Средний" GroupName="Size"/&gt;
@@ -214,7 +214,7 @@ if (RadioSmall.IsChecked == true) { size = "small"; }
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;!-- XAML: привязываем событие к методу --&gt;
 &lt;Button Content="Нажми" Click="Button_Click"/&gt;
 &lt;TextBox TextChanged="TextBox_TextChanged"/&gt;
@@ -281,7 +281,7 @@ private void Button_Click(object sender, RoutedEventArgs e)
                     </StackPanel>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,15,0,0">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="11">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="11">
 private int clickCount = 0;
 
 private void ClickerButton_Click(object sender, RoutedEventArgs e)

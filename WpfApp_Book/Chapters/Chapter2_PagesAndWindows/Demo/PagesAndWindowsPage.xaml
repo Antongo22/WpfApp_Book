@@ -49,7 +49,7 @@
                     </Grid>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,0">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;!-- MainWindow.xaml: Frame для отображения страниц --&gt;
 &lt;Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/&gt;
 
@@ -72,7 +72,7 @@ TabControl — элемент для организации контента п�
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 &lt;TabControl&gt;
     &lt;TabItem Header="Вкладка 1"&gt;
         &lt;TextBlock Text="Контент первой вкладки"/&gt;
@@ -144,7 +144,7 @@ myTabControl.SelectedIndex = 1;  // Вторая вкладка
                     </Grid>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,10,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Обычное окно
 var window = new SettingsWindow();
 window.Show();  // Код продолжает выполняться сразу
@@ -181,7 +181,7 @@ MessageBox — встроенный класс для простых диало�
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="12">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="12">
 // Простое сообщение
 MessageBox.Show("Операция завершена!");
 
@@ -248,7 +248,7 @@ if (result == MessageBoxResult.Yes)
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10">
-                        <TextBlock FontFamily="Consolas" Foreground="White" TextWrapping="Wrap" FontSize="11">
+                        <TextBlock FontFamily="Consolas" Foreground="White" xml:space="preserve" FontSize="11">
 // Способ 1: Через конструктор
 public class EditDialog : Window
 {
