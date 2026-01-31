@@ -18,7 +18,92 @@
                 </StackPanel>
             </Border>
 
-            <!-- Секция 1: Публикация приложения -->
+            <!-- Секция 1: Debug vs Release -->
+            <Border Background="#FDF2E9" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="⚙️ Debug vs Release: в чём разница?" FontSize="18" FontWeight="Bold" Foreground="#CA6F1E"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+При разработке вы запускаете приложение в режиме Debug. Но для пользователей нужен Release. 
+Почему это важно?
+                    </TextBlock>
+                    
+                    <!-- Таблица сравнения -->
+                    <Grid Margin="0,5,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Заголовки -->
+                        <Border Grid.Row="0" Grid.Column="0" Background="#E74C3C" Padding="10">
+                            <TextBlock Text="🐛 DEBUG" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" Background="#27AE60" Padding="10">
+                            <TextBlock Text="🚀 RELEASE" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                        </Border>
+                        
+                        <!-- Строка 1: Скорость -->
+                        <Border Grid.Row="1" Grid.Column="0" Background="#FADBD8" Padding="8">
+                            <TextBlock Text="Медленнее (нет оптимизаций)" FontSize="12" TextWrapping="Wrap"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1" Background="#D5F5E3" Padding="8">
+                            <TextBlock Text="Быстрее в 2-10 раз (оптимизации)" FontSize="12" TextWrapping="Wrap"/>
+                        </Border>
+                        
+                        <!-- Строка 2: Размер -->
+                        <Border Grid.Row="2" Grid.Column="0" Background="#FADBD8" Padding="8">
+                            <TextBlock Text="Больший размер файла" FontSize="12"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="1" Background="#D5F5E3" Padding="8">
+                            <TextBlock Text="Меньший размер (trimming)" FontSize="12"/>
+                        </Border>
+                        
+                        <!-- Строка 3: Отладка -->
+                        <Border Grid.Row="3" Grid.Column="0" Background="#FADBD8" Padding="8">
+                            <TextBlock Text="Можно ставить breakpoints" FontSize="12"/>
+                        </Border>
+                        <Border Grid.Row="3" Grid.Column="1" Background="#D5F5E3" Padding="8">
+                            <TextBlock Text="Нет отладочной информации" FontSize="12"/>
+                        </Border>
+                        
+                        <!-- Строка 4: Проверки -->
+                        <Border Grid.Row="4" Grid.Column="0" Background="#FADBD8" Padding="8">
+                            <TextBlock Text="Debug.Assert() работает" FontSize="12"/>
+                        </Border>
+                        <Border Grid.Row="4" Grid.Column="1" Background="#D5F5E3" Padding="8">
+                            <TextBlock Text="Debug.Assert() игнорируется" FontSize="12"/>
+                        </Border>
+                        
+                        <!-- Строка 5: Для кого -->
+                        <Border Grid.Row="5" Grid.Column="0" Background="#FADBD8" Padding="8">
+                            <TextBlock Text="Для разработки и тестирования" FontSize="12" FontWeight="Bold"/>
+                        </Border>
+                        <Border Grid.Row="5" Grid.Column="1" Background="#D5F5E3" Padding="8">
+                            <TextBlock Text="Для пользователей" FontSize="12" FontWeight="Bold"/>
+                        </Border>
+                    </Grid>
+                    
+                    <Border Background="#FEF9E7" CornerRadius="4" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="⚠️ Важно:" FontWeight="Bold" Foreground="#B7950B"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="12" Margin="0,5,0,0">
+Никогда не отправляйте Debug-версию пользователям! Она работает медленнее, 
+весит больше и может содержать отладочную информацию (пути к файлам на вашем компьютере).
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Секция 2: Публикация приложения -->
             <Border Background="#F0F4F8" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
                     <TextBlock Text="📦 Публикация приложения" FontSize="18" FontWeight="Bold" Foreground="#1A5276"/>
@@ -77,10 +162,165 @@
                             <TextBlock Text="Результат: bin/Release/net10.0-windows/win-x64/publish/" FontStyle="Italic" Foreground="#666"/>
                         </StackPanel>
                     </Border>
+                    
+                    <!-- Что выбрать -->
+                    <TextBlock Text="Какой вариант выбрать?" FontWeight="SemiBold" Margin="0,15,0,5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="#D4E6F1" CornerRadius="4" Padding="10" Margin="0,0,5,0">
+                            <StackPanel>
+                                <TextBlock Text="🏢 Для корпоративной среды:" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="Обычная публикация" FontSize="12" Margin="0,5,0,0"/>
+                                <TextBlock Text="(у всех установлен .NET)" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="Размер: ~1-5 MB" FontSize="11" Foreground="#27AE60" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="1" Background="#D5F5E3" CornerRadius="4" Padding="10" Margin="5,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="🎮 Для распространения:" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="Self-contained + SingleFile" FontSize="12" Margin="0,5,0,0"/>
+                                <TextBlock Text="(работает без установки .NET)" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="Размер: ~50-150 MB" FontSize="11" Foreground="#E67E22" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
                 </StackPanel>
             </Border>
 
-            <!-- Секция 2: Структура проекта -->
+            <!-- Секция 2.5: Распространённые ошибки -->
+            <Border Background="#FDEDEC" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="🚫 Частые ошибки при публикации" FontSize="18" FontWeight="Bold" Foreground="#C0392B"/>
+                    
+                    <StackPanel Margin="0,10,0,0">
+                        <Border Background="White" CornerRadius="4" Padding="10" Margin="0,0,0,8">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="12">
+                                    <Run Text="❌" Foreground="#E74C3C"/>
+                                    <Run Text=" Отправка папки bin/Debug"/>
+                                </TextBlock>
+                                <TextBlock Text="Медленно работает, большой размер, содержит отладочную информацию" 
+                                           FontSize="11" Foreground="#666" Margin="20,3,0,0"/>
+                                <TextBlock FontSize="11" Foreground="#27AE60" Margin="20,3,0,0">
+                                    <Run Text="✅"/>
+                                    <Run Text=" Используйте dotnet publish -c Release"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Background="White" CornerRadius="4" Padding="10" Margin="0,0,0,8">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="12">
+                                    <Run Text="❌" Foreground="#E74C3C"/>
+                                    <Run Text=" Забыли файлы ресурсов"/>
+                                </TextBlock>
+                                <TextBlock Text="Изображения, звуки, конфиги не попали в публикацию" 
+                                           FontSize="11" Foreground="#666" Margin="20,3,0,0"/>
+                                <TextBlock FontSize="11" Foreground="#27AE60" Margin="20,3,0,0">
+                                    <Run Text="✅"/>
+                                    <Run Text=" В .csproj укажите: Build Action = Content, Copy to Output"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Background="White" CornerRadius="4" Padding="10" Margin="0,0,0,8">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="12">
+                                    <Run Text="❌" Foreground="#E74C3C"/>
+                                    <Run Text=" Жёсткие пути к файлам"/>
+                                </TextBlock>
+                                <TextBlock Text="Код типа: File.Open(&quot;C:\\Users\\Вася\\...&quot;)" 
+                                           FontSize="11" Foreground="#666" Margin="20,3,0,0"/>
+                                <TextBlock FontSize="11" Foreground="#27AE60" Margin="20,3,0,0">
+                                    <Run Text="✅"/>
+                                    <Run Text=" Используйте относительные пути или AppDomain.CurrentDomain.BaseDirectory"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Background="White" CornerRadius="4" Padding="10">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="12">
+                                    <Run Text="❌" Foreground="#E74C3C"/>
+                                    <Run Text=" Не тестировали на чистой машине"/>
+                                </TextBlock>
+                                <TextBlock Text="У вас работает, у пользователя — нет" 
+                                           FontSize="11" Foreground="#666" Margin="20,3,0,0"/>
+                                <TextBlock FontSize="11" Foreground="#27AE60" Margin="20,3,0,0">
+                                    <Run Text="✅"/>
+                                    <Run Text=" Проверьте на виртуальной машине без .NET и Visual Studio"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Секция 2.7: Как распространять -->
+            <Border Background="#E8F8F5" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="🌐 Как распространять приложение" FontSize="18" FontWeight="Bold" Foreground="#148F77"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,10" FontSize="13">
+После публикации вам нужно доставить приложение пользователям. Вот основные способы:
+                    </TextBlock>
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Border Grid.Row="0" Grid.Column="0" Background="White" CornerRadius="4" Padding="10" Margin="0,0,5,5">
+                            <StackPanel>
+                                <TextBlock Text="📁 ZIP-архив" FontWeight="Bold" FontSize="13" Foreground="#2E86AB"/>
+                                <TextBlock Text="Самый простой способ" FontSize="11" Margin="0,5,0,3"/>
+                                <TextBlock Text="• Заархивируйте папку publish" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• Выложите на Google Drive / Dropbox" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• Пользователь скачивает и запускает .exe" FontSize="11" Foreground="#666"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Grid.Row="0" Grid.Column="1" Background="White" CornerRadius="4" Padding="10" Margin="5,0,0,5">
+                            <StackPanel>
+                                <TextBlock Text="📦 Инсталлятор" FontWeight="Bold" FontSize="13" Foreground="#8E44AD"/>
+                                <TextBlock Text="Профессиональный способ" FontSize="11" Margin="0,5,0,3"/>
+                                <TextBlock Text="• Inno Setup (бесплатно)" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• WiX Toolset (MSI)" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• Создаёт ярлыки, деинсталлятор" FontSize="11" Foreground="#666"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Grid.Row="1" Grid.Column="0" Background="White" CornerRadius="4" Padding="10" Margin="0,5,5,0">
+                            <StackPanel>
+                                <TextBlock Text="🏪 Microsoft Store" FontWeight="Bold" FontSize="13" Foreground="#27AE60"/>
+                                <TextBlock Text="Для широкой аудитории" FontSize="11" Margin="0,5,0,3"/>
+                                <TextBlock Text="• MSIX пакет" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• Автоматические обновления" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• Требуется аккаунт разработчика" FontSize="11" Foreground="#666"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="4" Padding="10" Margin="5,5,0,0">
+                            <StackPanel>
+                                <TextBlock Text="🎮 Itch.io / GameJolt" FontWeight="Bold" FontSize="13" Foreground="#E74C3C"/>
+                                <TextBlock Text="Для инди-игр" FontSize="11" Margin="0,5,0,3"/>
+                                <TextBlock Text="• Бесплатное размещение" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• Сообщество игроков" FontSize="11" Foreground="#666"/>
+                                <TextBlock Text="• Возможность продажи" FontSize="11" Foreground="#666"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Секция 3: Структура проекта -->
             <Border Background="#E8F6F3" CornerRadius="8" Padding="15" Margin="0,0,0,15">
                 <StackPanel>
                     <TextBlock Text="📁 Рекомендуемая структура проекта" FontSize="18" FontWeight="Bold" Foreground="#1E8449"/>
