@@ -114,21 +114,23 @@
                     
                     <TextBlock Text="Основные команды:" FontWeight="SemiBold" Margin="0,5,0,5"/>
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <StackPanel>
-                            <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 1. Простая публикация"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text=""/>
-                            <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 2. Self-contained (включает .NET)"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release --self-contained -r win-x64"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text=""/>
-                            <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 3. Один .exe файл"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release --self-contained -r win-x64"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="  /p:PublishSingleFile=true"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text=""/>
-                            <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 4. С обрезкой кода (меньше размер)"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release --self-contained -r win-x64"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="  /p:PublishSingleFile=true /p:PublishTrimmed=true"/>
-                        </StackPanel>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <StackPanel>
+                                <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 1. Простая публикация"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text=""/>
+                                <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 2. Self-contained (включает .NET)"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release --self-contained -r win-x64"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text=""/>
+                                <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 3. Один .exe файл"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release --self-contained -r win-x64"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="  /p:PublishSingleFile=true"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text=""/>
+                                <TextBlock FontFamily="Consolas" Foreground="#7F8C8D" FontSize="11" Text="# 4. С обрезкой кода (меньше размер)"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="dotnet publish -c Release --self-contained -r win-x64"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="  /p:PublishSingleFile=true /p:PublishTrimmed=true"/>
+                            </StackPanel>
+                        </ScrollViewer>
                     </Border>
                     
                     <TextBlock Text="Параметры:" FontWeight="SemiBold" Margin="0,5,0,5"/>
@@ -234,7 +236,7 @@
                                 </TextBlock>
                                 <TextBlock Text="Код типа: File.Open(&quot;C:\\Users\\Вася\\...&quot;)" 
                                            FontSize="11" Foreground="#666" Margin="20,3,0,0"/>
-                                <TextBlock FontSize="11" Foreground="#27AE60" Margin="20,3,0,0">
+                                <TextBlock FontSize="11" Foreground="#27AE60" Margin="20,3,0,0" TextWrapping="Wrap">
                                     <Run Text="✅"/>
                                     <Run Text=" Используйте относительные пути или AppDomain.CurrentDomain.BaseDirectory"/>
                                 </TextBlock>
@@ -329,34 +331,36 @@
                     </TextBlock>
                     
                     <Border Background="#2C3E50" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <StackPanel>
-                            <TextBlock FontFamily="Consolas" Foreground="#F39C12" FontSize="12" Text="MyGame/"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── App.xaml                 # Точка входа"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── App.xaml.cs"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── MainWindow.xaml          # Главное окно"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── MainWindow.xaml.cs"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="├── Models/                  # Игровые объекты"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Player.cs"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Enemy.cs"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── GameState.cs"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="├── Views/                   # Страницы и окна"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── MenuPage.xaml"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── GamePage.xaml"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── SettingsPage.xaml"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#9B59B6" FontSize="11" Text="├── Helpers/                 # Вспомогательные"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── CollisionHelper.cs"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── PathfindingHelper.cs"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#E74C3C" FontSize="11" Text="├── Resources/               # Ресурсы"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Images/"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Sounds/"/>
-                            <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── Styles.xaml"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
-                            <TextBlock FontFamily="Consolas" Foreground="#95A5A6" FontSize="11" Text="└── README.md                # Описание проекта"/>
-                        </StackPanel>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <StackPanel>
+                                <TextBlock FontFamily="Consolas" Foreground="#F39C12" FontSize="12" Text="MyGame/"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── App.xaml                 # Точка входа"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── App.xaml.cs"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── MainWindow.xaml          # Главное окно"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="├── MainWindow.xaml.cs"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="├── Models/                  # Игровые объекты"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Player.cs"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Enemy.cs"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── GameState.cs"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#27AE60" FontSize="11" Text="├── Views/                   # Страницы и окна"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── MenuPage.xaml"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── GamePage.xaml"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── SettingsPage.xaml"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#9B59B6" FontSize="11" Text="├── Helpers/                 # Вспомогательные"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── CollisionHelper.cs"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── PathfindingHelper.cs"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#E74C3C" FontSize="11" Text="├── Resources/               # Ресурсы"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Images/"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   ├── Sounds/"/>
+                                <TextBlock FontFamily="Consolas" Foreground="White" FontSize="11" Text="│   └── Styles.xaml"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="11" Text="│"/>
+                                <TextBlock FontFamily="Consolas" Foreground="#95A5A6" FontSize="11" Text="└── README.md                # Описание проекта"/>
+                            </StackPanel>
+                        </ScrollViewer>
                     </Border>
                 </StackPanel>
             </Border>

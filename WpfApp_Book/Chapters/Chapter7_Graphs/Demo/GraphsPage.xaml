@@ -63,7 +63,8 @@ BFS — алгоритм, который находит КРАТЧАЙШИЙ п�
                     
                     <TextBlock Text="Принцип работы:" FontWeight="SemiBold" Margin="0,5,0,5"/>
                     <Border Background="White" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" FontSize="12">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <TextBlock FontFamily="Consolas" FontSize="12" xml:space="preserve">
 1. Начинаем со стартовой точки
 2. Добавляем её в очередь
 3. Пока очередь не пуста:
@@ -71,12 +72,14 @@ BFS — алгоритм, который находит КРАТЧАЙШИЙ п�
    b. Если это цель — нашли путь!
    c. Иначе добавляем всех непосещённых соседей в очередь
    d. Помечаем текущую клетку как посещённую
-                        </TextBlock>
+                            </TextBlock>
+                        </ScrollViewer>
                     </Border>
                     
                     <TextBlock Text="Визуализация:" FontWeight="SemiBold" Margin="0,5,0,5"/>
                     <Border Background="#1A252F" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="12">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <TextBlock FontFamily="Consolas" Foreground="#3498DB" FontSize="12" xml:space="preserve">
 Шаг 0:  S . . . .     S = старт
         . # . # .     E = выход
         . . . . .     # = стена
@@ -96,7 +99,8 @@ BFS — алгоритм, который находит КРАТЧАЙШИЙ п�
         . . . . E
 
 ...и так далее, пока не достигнем E
-                        </TextBlock>
+                            </TextBlock>
+                        </ScrollViewer>
                     </Border>
                 </StackPanel>
             </Border>
@@ -187,7 +191,8 @@ private List&lt;Point&gt;? FindPathBFS(Point start, Point end)
                     </TextBlock>
                     
                     <Border Background="White" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-                        <TextBlock FontFamily="Consolas" FontSize="12">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <TextBlock FontFamily="Consolas" FontSize="12" xml:space="preserve">
 cameFrom:
   (1,0) ← (0,0)   // В клетку (1,0) пришли из (0,0)
   (1,1) ← (1,0)   // В клетку (1,1) пришли из (1,0)
@@ -198,7 +203,8 @@ cameFrom:
   (2,2) → (2,1) → (1,1) → (1,0) → (0,0)
                   ↓ Reverse()
   (0,0) → (1,0) → (1,1) → (2,1) → (2,2)  ✓
-                        </TextBlock>
+                            </TextBlock>
+                        </ScrollViewer>
                     </Border>
                 </StackPanel>
             </Border>
